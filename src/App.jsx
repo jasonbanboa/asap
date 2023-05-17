@@ -18,17 +18,11 @@ function App() {
   }, [listData]);
 
   const ascendingById = () => {
-    const copyedState = structuredClone(listData);
-
-    copyedState.sort((a, b) => a.id - b.id );
-    setListData(copyedState); 
+    setListData(prevState => [...prevState].sort((a, b) => a.id - b.id )); 
   }
 
   const descendingById = () => {
-    const copyedState = structuredClone(listData);
-
-    copyedState.sort((a, b) => b.id - a.id );
-    setListData(copyedState); 
+    setListData(prevState => [...prevState].sort((a, b) => b.id - a.id )); 
   }
 
   const ascendingByLevel = () => {
@@ -46,19 +40,12 @@ function App() {
     setListData(filtered);
   }
 
-  const ascendingByName = () => {
-    const copyedState = structuredClone(listData);
-
-    copyedState.sort((a, b) => a.name.localeCompare(b.name) );
-    
-    setListData(copyedState);
+  const ascendingByName = () => {    
+    setListData(prevState => [...prevState].sort((a, b) => a.name.localeCompare(b.name)));
   }
 
   const descendingByName = () => {
-    const copyedState = structuredClone(listData);
-
-    copyedState.sort((a, b) => b.name.localeCompare(a.name) );
-    setListData(copyedState); 
+    setListData(prevState => [...prevState].sort((a, b) => b.name.localeCompare(a.name))); 
   }
 
   return (
